@@ -21,7 +21,12 @@ namespace ConsoleApi
                 
                 Banks currentBank = JsonConvert.DeserializeObject<Banks>(banks);
                 Console.WriteLine(currentBank.КодБанку);
-                
+
+                foreach (Ліцензії item in currentBank.Ліцензії)
+                {
+                    Console.WriteLine(item.БанківськаЛіцензія.НомерБланка);
+                }
+
                 /*
                 JObject currbank = JObject.Parse(banks);
                 Console.WriteLine(currbank.GetValue("Код банку"));*/
