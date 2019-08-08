@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 
@@ -18,13 +19,22 @@ namespace ConsoleApi
 
             if (banks != "")
             {
-                
                 Banks currentBank = JsonConvert.DeserializeObject<Banks>(banks);
                 Console.WriteLine(currentBank.КодБанку);
-
+                
                 foreach (Ліцензії item in currentBank.Ліцензії)
                 {
-                    Console.WriteLine(item.БанківськаЛіцензія.НомерБланка);
+                    Console.WriteLine("НомерБланка: " + item.БанківськаЛіцензія.НомерБланка);
+
+                    foreach (Дозволи itemd in item.Дозволи)
+                    {
+                        foreach (KeyValuePair<string,string> itemPo in itemd.ПерелікОпераційДозвола)
+                        {
+                            Console.WriteLine(itemPo.Key + " : "+itemPo.Value);
+                        }
+                        Console.WriteLine("---");
+                    }
+                    Console.WriteLine("-----");
                 }
 
                 /*
