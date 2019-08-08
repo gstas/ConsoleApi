@@ -25,7 +25,6 @@ namespace ConsoleApi
                 foreach (Ліцензії item in currentBank.Ліцензії)
                 {
                     Console.WriteLine("НомерБланка: " + item.БанківськаЛіцензія.НомерБланка);
-
                     foreach (Дозволи itemd in item.Дозволи)
                     {
                         foreach (KeyValuePair<string,string> itemPo in itemd.ПерелікОпераційДозвола)
@@ -36,10 +35,7 @@ namespace ConsoleApi
                     }
                     Console.WriteLine("-----");
                 }
-
-                /*
-                JObject currbank = JObject.Parse(banks);
-                Console.WriteLine(currbank.GetValue("Код банку"));*/
+            
             }
             else
             {
